@@ -1,0 +1,554 @@
+<!doctype html>
+<!--
+  =====================================================================
+  EVIDENCIA 21 · Desarrollo de aplicativo Bootstrap
+  Programa: Técnico en Programación de Software (233104) · SENA
+  Tema: Cha Eun-woo — biografía y trayectoria
+  Framework: Bootstrap 5.3.8 (CDN)  ·  HTML5 + CSS3 + JavaScript vanilla
+  =====================================================================
+  Estructura de la página:
+    1. Navegación (navbar + dropdown + collapse responsive)
+    2. Hero (portada)
+    3. Biografía (grid + lista de datos)
+    4. Trayectoria (línea de tiempo)
+    5. Obras (tarjetas + filtros + modal)
+    6. Preguntas frecuentes (accordion)
+    7. Libro de visitas (formulario validado + toast)
+    8. Pie de página
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Biografía, trayectoria y obras de Cha Eun-woo, actor y cantante surcoreano. Proyecto académico SENA con Bootstrap 5.">
+  <meta name="theme-color" content="#0d1030">
+  <title>Cha Eun-woo · Biografía y trayectoria</title>
+
+  <!-- Tipografías (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.8 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- Hojas de estilo propias (el orden importa: variables → base → componentes → secciones) -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/base.css" rel="stylesheet">
+  <link href="css/components.css" rel="stylesheet">
+  <link href="css/sections.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Enlace de accesibilidad: permite saltar la navegación con el teclado -->
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- ============================ 1. NAVEGACIÓN ============================ -->
+  <header>
+    <nav class="navbar navbar-expand-lg site-nav sticky-top" data-bs-theme="dark" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand brand" href="#inicio" aria-label="Cha Eun-woo, ir al inicio">차은우</a>
+
+        <!-- Botón hamburguesa (visible en móvil y tableta) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+                aria-expanded="false" aria-label="Abrir o cerrar el menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="#biografia">Biografía</a></li>
+            <li class="nav-item"><a class="nav-link" href="#trayectoria">Trayectoria</a></li>
+            <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+
+            <!-- Menú desplegable (dropdown) con accesos directos a obras -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#obras" role="button" data-bs-toggle="dropdown" aria-expanded="false">Obras</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#obras" data-filtro-nav="serie">Series y películas</a></li>
+                <li><a class="dropdown-item" href="#obras" data-filtro-nav="musica">Música</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#obras" data-filtro-nav="todas">Ver todo</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="#preguntas">Preguntas</a></li>
+            <li class="nav-item ms-lg-2"><a class="btn btn-sm btn-outline-light nav-cta" href="#visitas">Libro de visitas</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ============================ 2. HERO ============================ -->
+    <section class="hero" id="inicio" data-bs-theme="dark" aria-labelledby="titulo-hero">
+      <div class="hero-light" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="row align-items-center g-5">
+
+          <div class="col-lg-7">
+            <p class="hero-kicker">Actor y cantante surcoreano</p>
+            <h1 id="titulo-hero" class="hero-title">Cha<br>Eun-woo</h1>
+            <p class="hero-lead">
+              Del escenario con ASTRO a protagonizar series que se vieron en todo el mundo.
+              Esta es su historia, contada en cinco secciones.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="#biografia" class="btn btn-accent btn-lg">Leer su biografía</a>
+              <a href="#obras" class="btn btn-outline-light btn-lg">Ver sus obras</a>
+            </div>
+          </div>
+
+          <!-- Retrato principal (si la imagen falla, queda el monograma de respaldo) -->
+          <div class="col-lg-5">
+            <figure class="portrait" aria-label="Retrato de Cha Eun-woo">
+              <span class="portrait-mark" aria-hidden="true">CEW</span>
+              <img src="img/cha-eun-woo-1.jpg" alt="Cha Eun-woo con suéter negro haciendo un gesto de corazón con los dedos" width="452" height="678"
+                   onerror="this.remove()">
+            </figure>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 3. BIOGRAFÍA ============================ -->
+    <section class="section" id="biografia" aria-labelledby="titulo-bio">
+      <div class="container">
+        <div class="row g-5">
+
+          <div class="col-lg-7">
+            <h2 id="titulo-bio" class="section-title">Dos escenarios, una sola carrera</h2>
+            <p class="lead">
+              Cha Eun-woo es el nombre artístico de Lee Dong-min, cantante y actor de Corea del Sur.
+              Se hizo conocido como integrante de ASTRO y después como protagonista de series de televisión.
+            </p>
+            <p>
+              Su primer papel fue en la película <em>My Brilliant Life</em> (2014). En 2016 debutó con ASTRO
+              y desde entonces combina conciertos, discos y personajes de drama.
+            </p>
+            <p>
+              En el escenario trabaja con la voz y el movimiento; frente a la cámara, con el gesto y el silencio.
+              Esa mezcla de lenguajes es lo que define su trayectoria.
+            </p>
+          </div>
+
+          <!-- Lista de datos (list-group de Bootstrap) -->
+          <div class="col-lg-5">
+            <h3 class="h5 mb-3">Datos clave</h3>
+            <dl class="list-group list-group-flush facts mb-0">
+              <div class="list-group-item facts-row"><dt>Nombre real</dt><dd>Lee Dong-min</dd></div>
+              <div class="list-group-item facts-row"><dt>Nacimiento</dt><dd>1997, Corea del Sur</dd></div>
+              <div class="list-group-item facts-row"><dt>Grupo</dt><dd>ASTRO (desde 2016)</dd></div>
+              <div class="list-group-item facts-row"><dt>Primer papel</dt><dd><em>My Brilliant Life</em>, 2014</dd></div>
+              <div class="list-group-item facts-row"><dt>Disco en solitario</dt><dd><em>ENTITY</em>, 2024</dd></div>
+            </dl>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 4. TRAYECTORIA ============================ -->
+    <section class="section section-dark" id="trayectoria" data-bs-theme="dark" aria-labelledby="titulo-tray">
+      <div class="container">
+        <h2 id="titulo-tray" class="section-title">Cronología</h2>
+        <p class="section-sub">Cuatro momentos que marcan su carrera.</p>
+
+        <!-- Lista ordenada: el contenido sí es una secuencia, por eso usa <ol> -->
+        <ol class="timeline row g-4 list-unstyled">
+          <li class="col-sm-6 col-lg-3">
+            <div class="timeline-card">
+              <span class="timeline-year">2014</span>
+              <h3>Primer papel</h3>
+              <p>Aparece en la película <em>My Brilliant Life</em>.</p>
+            </div>
+          </li>
+          <li class="col-sm-6 col-lg-3">
+            <div class="timeline-card">
+              <span class="timeline-year">2016</span>
+              <h3>Debut con ASTRO</h3>
+              <p>Sale el miniálbum <em>Spring Up</em> y comienza su carrera musical.</p>
+            </div>
+          </li>
+          <li class="col-sm-6 col-lg-3">
+            <div class="timeline-card">
+              <span class="timeline-year">2018 – 2020</span>
+              <h3>Protagonista</h3>
+              <p>Lidera <em>My ID Is Gangnam Beauty</em> y <em>True Beauty</em>.</p>
+            </div>
+          </li>
+          <li class="col-sm-6 col-lg-3">
+            <div class="timeline-card">
+              <span class="timeline-year">2024</span>
+              <h3>Voz propia</h3>
+              <p>Publica <em>ENTITY</em>, su primer miniálbum en solitario.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================ 4B. GALERÍA (CAROUSEL) ============================ -->
+    <section class="section section-mist" id="galeria" aria-labelledby="titulo-galeria">
+      <div class="container">
+        <h2 id="titulo-galeria" class="section-title">Galería</h2>
+        <p class="section-sub mb-4">Fotografías de su imagen pública. Usa las flechas o el teclado para avanzar.</p>
+
+        <!-- Carousel de Bootstrap: componente dinámico con controles e indicadores -->
+        <div id="carruselGaleria" class="carousel slide gallery" data-bs-ride="false" aria-roledescription="carrusel" aria-label="Galería de fotos">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carruselGaleria" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Foto 1"></button>
+            <button type="button" data-bs-target="#carruselGaleria" data-bs-slide-to="1" aria-label="Foto 2"></button>
+            <button type="button" data-bs-target="#carruselGaleria" data-bs-slide-to="2" aria-label="Foto 3"></button>
+            <button type="button" data-bs-target="#carruselGaleria" data-bs-slide-to="3" aria-label="Foto 4"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="img/cha-eun-woo-2.jpg" class="gallery-img" style="object-position:center 25%" alt="Retrato cercano con camisa de rayas azules bajo la luz del sol" loading="lazy">
+            </div>
+            <div class="carousel-item">
+              <img src="img/cha-eun-woo-3.jpg" class="gallery-img" style="object-position:center 30%" alt="Retrato sonriendo con suéter claro y un gesto de corazón con los dedos" loading="lazy">
+            </div>
+            <div class="carousel-item">
+              <img src="img/cha-eun-woo-4.jpg" class="gallery-img" style="object-position:center 20%" alt="Cha Eun-woo con saco gris y corbata saludando con la mano" loading="lazy">
+            </div>
+            <div class="carousel-item">
+              <img src="img/cha-eun-woo-1.jpg" class="gallery-img" style="object-position:center 20%" alt="Cha Eun-woo con suéter negro frente a una farola dorada" loading="lazy">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carruselGaleria" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Foto anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carruselGaleria" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Foto siguiente</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 5. OBRAS ============================ -->
+    <section class="section" id="obras" aria-labelledby="titulo-obras">
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+          <div>
+            <h2 id="titulo-obras" class="section-title mb-1">Obras</h2>
+            <p class="section-sub mb-0">Elige una tarjeta para ver el personaje y el año.</p>
+          </div>
+
+          <!-- Filtros: botones tipo "toggle" de Bootstrap -->
+          <div class="btn-group" role="group" aria-label="Filtrar obras" id="filtros">
+            <button type="button" class="btn btn-filter active" data-filtro="todas" aria-pressed="true">Todas</button>
+            <button type="button" class="btn btn-filter" data-filtro="serie" aria-pressed="false">Series y cine</button>
+            <button type="button" class="btn btn-filter" data-filtro="musica" aria-pressed="false">Música</button>
+          </div>
+        </div>
+
+        <!-- Rejilla responsive: 1 columna en móvil, 2 en tableta, 3 en escritorio -->
+        <div class="row g-4" id="listaObras">
+
+          <div class="col-12 col-md-6 col-lg-4" data-categoria="serie">
+            <article class="card work-card h-100">
+              <div class="work-art art-brilliant" aria-hidden="true"><span>2014</span></div>
+              <div class="card-body">
+                <h3 class="card-title h5">My Brilliant Life</h3>
+                <p class="card-text text-body-secondary">Película · Su primer papel</p>
+                <button type="button" class="btn btn-link p-0 work-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalObra"
+                        data-titulo="My Brilliant Life" data-anio="2014" data-tipo="Película"
+                        data-papel="Primera aparición en pantalla"
+                        data-descripcion="Drama familiar con el que comenzó su carrera como actor, años antes de su debut musical.">
+                  Ver detalles
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4" data-categoria="serie">
+            <article class="card work-card h-100">
+              <div class="work-art art-gangnam" aria-hidden="true"><span>2018</span></div>
+              <div class="card-body">
+                <h3 class="card-title h5">My ID Is Gangnam Beauty</h3>
+                <p class="card-text text-body-secondary">Serie · Do Kyung-seok</p>
+                <button type="button" class="btn btn-link p-0 work-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalObra"
+                        data-titulo="My ID Is Gangnam Beauty" data-anio="2018" data-tipo="Serie"
+                        data-papel="Do Kyung-seok"
+                        data-descripcion="Drama universitario basado en un webtoon sobre la identidad, la apariencia y las relaciones.">
+                  Ver detalles
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4" data-categoria="serie">
+            <article class="card work-card h-100">
+              <div class="work-art art-historian" aria-hidden="true"><span>2019</span></div>
+              <div class="card-body">
+                <h3 class="card-title h5">Rookie Historian Goo Hae-ryung</h3>
+                <p class="card-text text-body-secondary">Serie · Príncipe Yi Rim</p>
+                <button type="button" class="btn btn-link p-0 work-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalObra"
+                        data-titulo="Rookie Historian Goo Hae-ryung" data-anio="2019" data-tipo="Serie"
+                        data-papel="Príncipe Yi Rim"
+                        data-descripcion="Drama histórico en el que interpreta a un príncipe con una faceta literaria secreta.">
+                  Ver detalles
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4" data-categoria="serie">
+            <article class="card work-card h-100">
+              <div class="work-art art-true" aria-hidden="true"><span>2020</span></div>
+              <div class="card-body">
+                <h3 class="card-title h5">True Beauty</h3>
+                <p class="card-text text-body-secondary">Serie · Lee Su-ho</p>
+                <button type="button" class="btn btn-link p-0 work-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalObra"
+                        data-titulo="True Beauty" data-anio="2020 – 2021" data-tipo="Serie"
+                        data-papel="Lee Su-ho"
+                        data-descripcion="Comedia romántica juvenil basada en el webtoon del mismo nombre.">
+                  Ver detalles
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4" data-categoria="serie">
+            <article class="card work-card h-100">
+              <div class="work-art art-wonderful" aria-hidden="true"><span>2024</span></div>
+              <div class="card-body">
+                <h3 class="card-title h5">Wonderful World</h3>
+                <p class="card-text text-body-secondary">Serie · Kwon Seon-yul</p>
+                <button type="button" class="btn btn-link p-0 work-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalObra"
+                        data-titulo="Wonderful World" data-anio="2024" data-tipo="Serie"
+                        data-papel="Kwon Seon-yul"
+                        data-descripcion="Thriller dramático sobre dos personas marcadas por una pérdida.">
+                  Ver detalles
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4" data-categoria="musica">
+            <article class="card work-card h-100">
+              <div class="work-art art-entity" aria-hidden="true"><span>ENTITY</span></div>
+              <div class="card-body">
+                <h3 class="card-title h5">ENTITY</h3>
+                <p class="card-text text-body-secondary">Miniálbum · Primer trabajo en solitario</p>
+                <button type="button" class="btn btn-link p-0 work-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalObra"
+                        data-titulo="ENTITY" data-anio="2024" data-tipo="Miniálbum"
+                        data-papel="Artista principal"
+                        data-descripcion="Su primer miniálbum en solitario, publicado en febrero de 2024, paralelo a su trabajo con ASTRO.">
+                  Ver detalles
+                </button>
+              </div>
+            </article>
+          </div>
+
+        </div>
+        <p class="text-body-secondary small mt-3" id="contadorObras" role="status" aria-live="polite">Mostrando 6 de 6 obras.</p>
+      </div>
+    </section>
+
+    <!-- ============================ 6. PREGUNTAS (ACCORDION) ============================ -->
+    <section class="section section-mist" id="preguntas" aria-labelledby="titulo-preg">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <h2 id="titulo-preg" class="section-title">Preguntas frecuentes</h2>
+            <p class="section-sub">Lo básico para entender quién es y por qué es conocido.</p>
+          </div>
+          <div class="col-lg-8">
+            <div class="accordion" id="acordeon">
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#preg1" aria-expanded="true" aria-controls="preg1">¿Cha Eun-woo es su nombre real?</button>
+                </h3>
+                <div id="preg1" class="accordion-collapse collapse show" data-bs-parent="#acordeon">
+                  <div class="accordion-body">No. Es su nombre artístico. Su nombre de nacimiento es Lee Dong-min.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#preg2" aria-expanded="false" aria-controls="preg2">¿Qué es ASTRO?</button>
+                </h3>
+                <div id="preg2" class="accordion-collapse collapse" data-bs-parent="#acordeon">
+                  <div class="accordion-body">Es un grupo de música surcoreano de seis integrantes que debutó en 2016. Cha Eun-woo es uno de ellos.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#preg3" aria-expanded="false" aria-controls="preg3">¿Cómo se llama el fandom de ASTRO?</button>
+                </h3>
+                <div id="preg3" class="accordion-collapse collapse" data-bs-parent="#acordeon">
+                  <div class="accordion-body">Los seguidores del grupo se llaman AROHA.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#preg4" aria-expanded="false" aria-controls="preg4">¿Por dónde empezar a ver sus series?</button>
+                </h3>
+                <div id="preg4" class="accordion-collapse collapse" data-bs-parent="#acordeon">
+                  <div class="accordion-body"><em>True Beauty</em> es la más popular y una buena puerta de entrada. Si prefieres algo histórico, prueba <em>Rookie Historian Goo Hae-ryung</em>.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 7. LIBRO DE VISITAS ============================ -->
+    <section class="section" id="visitas" aria-labelledby="titulo-visitas">
+      <div class="container">
+        <div class="row g-5">
+
+          <div class="col-lg-5">
+            <h2 id="titulo-visitas" class="section-title">Libro de visitas</h2>
+            <p class="section-sub">Cuéntanos qué obra te gustó más. Tu mensaje se guarda en una base de datos y lo verán otros visitantes.</p>
+            <p class="small" id="estadoDatos" role="status"></p>
+          </div>
+
+          <div class="col-lg-7">
+            <!-- novalidate: la validación la controla Bootstrap + JavaScript -->
+            <form id="formVisitas" class="form-card needs-validation" novalidate>
+              <div class="row g-3">
+
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" minlength="2" maxlength="40" autocomplete="name" required>
+                  <div class="invalid-feedback">Escribe tu nombre (mínimo 2 letras).</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="correo" class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control" id="correo" name="correo" autocomplete="email" required>
+                  <div class="invalid-feedback">Escribe un correo válido, por ejemplo nombre@correo.com.</div>
+                </div>
+
+                <div class="col-12">
+                  <label for="obra" class="form-label">Obra favorita</label>
+                  <select class="form-select" id="obra" name="obra" required>
+                    <option value="" selected disabled>Elige una opción</option>
+                    <option>My Brilliant Life</option>
+                    <option>My ID Is Gangnam Beauty</option>
+                    <option>Rookie Historian Goo Hae-ryung</option>
+                    <option>True Beauty</option>
+                    <option>Wonderful World</option>
+                    <option>ENTITY</option>
+                    <option>ASTRO</option>
+                  </select>
+                  <div class="invalid-feedback">Elige una obra.</div>
+                </div>
+
+                <fieldset class="col-12">
+                  <legend class="form-label fs-6">Tipo de visitante</legend>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="visitante" id="vFan" value="Fan" required>
+                    <label class="form-check-label" for="vFan">Fan</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="visitante" id="vCurioso" value="Curioso">
+                    <label class="form-check-label" for="vCurioso">Solo curiosidad</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="visitante" id="vEstudiante" value="Estudiante">
+                    <label class="form-check-label" for="vEstudiante">Estudiante</label>
+                    <div class="invalid-feedback">Elige una opción.</div>
+                  </div>
+                </fieldset>
+
+                <div class="col-12">
+                  <label for="mensaje" class="form-label">Mensaje</label>
+                  <textarea class="form-control" id="mensaje" name="mensaje" rows="3" minlength="5" maxlength="240" required></textarea>
+                  <div class="form-text"><span id="contadorMensaje">0</span> / 240 caracteres</div>
+                  <div class="invalid-feedback">Escribe un mensaje de al menos 5 caracteres.</div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="acepto" required>
+                    <label class="form-check-label" for="acepto">Acepto que mi nombre y mensaje se muestren públicamente. El correo no se muestra.</label>
+                    <div class="invalid-feedback">Debes aceptar para publicar.</div>
+                  </div>
+                </div>
+
+                <div class="col-12 d-flex flex-wrap gap-2">
+                  <button type="submit" class="btn btn-accent" id="btnPublicar">Publicar mensaje</button>
+                  <button type="reset" class="btn btn-outline-secondary">Limpiar</button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Aquí JavaScript inserta los mensajes publicados -->
+            <div id="listaVisitas" class="mt-4 d-grid gap-3" aria-live="polite"></div>
+            <p id="visitasVacio" class="text-body-secondary mt-3" hidden>Aún no hay mensajes. ¡Sé la primera persona en escribir!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ 8. PIE DE PÁGINA ============================ -->
+  <footer class="site-footer" data-bs-theme="dark">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <span>Cha Eun-woo · Biografía y trayectoria</span>
+      <span>Proyecto académico · SENA · Evidencia 21 · Bootstrap 5.3</span>
+    </div>
+    <div class="container mt-2 footer-note">
+      Sitio educativo sin fines comerciales. No está afiliado a Cha Eun-woo ni a su agencia. Las fotografías pertenecen a sus respectivos autores y se usan con fines académicos.
+    </div>
+  </footer>
+
+  <!-- ============================ COMPONENTES FLOTANTES ============================ -->
+
+  <!-- Modal con el detalle de cada obra (se rellena desde main.js) -->
+  <div class="modal fade" id="modalObra" tabindex="-1" aria-labelledby="modalTitulo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <p class="modal-meta mb-1" id="modalMeta"></p>
+            <h2 class="modal-title h4" id="modalTitulo">Obra</h2>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p class="fw-semibold mb-2" id="modalPapel"></p>
+          <p class="mb-0" id="modalDescripcion"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-accent" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast: aviso de confirmación al publicar un mensaje -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toastVisitas" class="toast" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastTexto">Mensaje publicado.</div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar aviso"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3.8 JS (incluye Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <!-- Scripts propios, un archivo por responsabilidad -->
+  <script src="js/config.js"></script>
+  <script src="js/datos.js"></script>
+  <script src="js/obras.js"></script>
+  <script src="js/visitas.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+/* =====================================================================
+   base.css · Estilos globales: tipografía, enlaces, foco, accesibilidad
+   ===================================================================== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;           /* evita que el navbar tape los títulos al navegar */
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.65;
+  background: #fff;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Enlace "saltar al contenido": solo visible al recibir foco con teclado */
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: 1rem;
+  z-index: 2000;
+  padding: .6rem 1rem;
+  background: #fff;
+  color: var(--ink);
+  border-radius: .4rem;
+}
+.skip-link:focus { top: 1rem; }
+
+/* Foco visible y consistente para navegación con teclado (WCAG 2.4.7) */
+:focus-visible {
+  outline: 3px solid var(--periwinkle) !important;
+  outline-offset: 3px;
+}
+
+/* Respeta a quien desactiva las animaciones en su sistema (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

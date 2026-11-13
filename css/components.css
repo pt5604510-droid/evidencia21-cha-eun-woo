@@ -1,0 +1,131 @@
+/* =====================================================================
+   components.css · Componentes reutilizables
+   (navbar, botones, tarjetas, formulario, modal, accordion, footer)
+   ===================================================================== */
+
+/* ---------- Navbar ---------- */
+.site-nav {
+  background: var(--night);
+  border-bottom: 1px solid rgb(255 255 255 / .12);
+  min-height: 70px;
+}
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+.site-nav .nav-link { font-weight: 500; }
+.site-nav .nav-link:hover { color: var(--aqua); }
+.nav-cta { border-color: rgb(255 255 255 / .5); }
+
+/* ---------- Botones ---------- */
+.btn { border-radius: .5rem; font-weight: 600; }
+
+/* Botón principal de la marca */
+.btn-accent {
+  background: var(--aqua);
+  border-color: var(--aqua);
+  color: var(--night);
+}
+.btn-accent:hover,
+.btn-accent:focus-visible {
+  background: #4fd6c5;
+  border-color: #4fd6c5;
+  color: var(--night);
+}
+
+/* Botones de filtro de obras */
+.btn-filter {
+  border: 1px solid #c9ceff;
+  background: #fff;
+  color: var(--ink);
+}
+.btn-filter:hover { background: var(--mist); }
+.btn-filter.active {
+  background: var(--night);
+  border-color: var(--night);
+  color: #fff;
+}
+
+/* ---------- Tarjetas de obras ---------- */
+.work-card {
+  border: 1px solid #dfe2ff;
+  border-radius: .9rem;
+  overflow: hidden;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 .8rem 1.6rem rgb(13 16 48 / .12);
+}
+
+/* "Portada" de cada obra hecha solo con CSS (sin imágenes externas) */
+.work-art {
+  display: flex;
+  align-items: flex-end;
+  min-height: 170px;
+  padding: 1rem 1.2rem;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.art-brilliant { background: linear-gradient(135deg, #5b6bb5, #1d2250); }
+.art-gangnam   { background: linear-gradient(135deg, #d77fa1, #4a3a82); }
+.art-historian { background: linear-gradient(135deg, #3f8f86, #1a2f4d); }
+.art-true      { background: linear-gradient(135deg, #6c8cff, #3a2a7a); }
+.art-wonderful { background: linear-gradient(135deg, #4c5a7a, #0d1030); }
+.art-entity    { background: linear-gradient(135deg, #7b88ff, #6ee7d8); color: var(--night); }
+
+.work-btn {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+
+/* ---------- Formulario ---------- */
+.form-card {
+  padding: clamp(1.25rem, 4vw, 2rem);
+  background: var(--mist);
+  border-radius: 1rem;
+}
+.form-control,
+.form-select { min-height: 46px; }
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--periwinkle);
+  box-shadow: 0 0 0 .25rem rgb(123 136 255 / .3);
+}
+
+/* Mensajes publicados en el libro de visitas */
+.visita {
+  padding: 1rem 1.2rem;
+  background: #fff;
+  border: 1px solid #dfe2ff;
+  border-left: 4px solid var(--periwinkle);
+  border-radius: .6rem;
+}
+.visita p { margin: .3rem 0 0; }
+.visita-meta { color: var(--ink-soft); font-size: .85rem; }
+
+/* ---------- Accordion ---------- */
+.accordion {
+  --bs-accordion-active-bg: #dfe2ff;
+  --bs-accordion-active-color: var(--ink);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 .25rem rgb(123 136 255 / .3);
+}
+.accordion-button { font-weight: 600; }
+
+/* ---------- Modal ---------- */
+.modal-meta { color: var(--ink-soft); font-size: .85rem; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 1.75rem 0;
+  background: var(--night);
+  color: #b4b8dc;
+  font-size: .9rem;
+}
+.footer-note { color: #8a8fb8; font-size: .8rem; }

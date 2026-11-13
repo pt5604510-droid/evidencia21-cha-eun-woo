@@ -1,0 +1,30 @@
+/* =====================================================================
+   variables.css · Tokens de diseño (colores, tipografía, espacios)
+   Todo el sitio usa estas variables: cambiar un valor aquí cambia todo.
+   ===================================================================== */
+:root {
+  /* Paleta: noche de concierto + luz periwinkle + acento aqua */
+  --night:       #0d1030;   /* fondo oscuro principal */
+  --night-2:     #171b4a;   /* fondo oscuro secundario */
+  --periwinkle:  #7b88ff;   /* color de marca */
+  --aqua:        #6ee7d8;   /* acento para botones y detalles */
+  --mist:        #eef0ff;   /* fondo claro alterno */
+  --ink:         #12142e;   /* texto sobre fondo claro */
+  --ink-soft:    #4b4f73;   /* texto secundario sobre fondo claro */
+
+  /* Tipografías */
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body:    'Figtree', system-ui, sans-serif;
+
+  /* Espaciado de secciones (fluido: crece con la pantalla) */
+  --section-y: clamp(4rem, 9vw, 7rem);
+
+  /* Animación */
+  --ease: cubic-bezier(.2, .75, .25, 1);
+
+  /* Ajustes de Bootstrap con nuestras variables */
+  --bs-body-font-family: var(--font-body);
+  --bs-body-color: var(--ink);
+  --bs-link-color: #4a56d9;
+  --bs-link-hover-color: #2e38b3;
+}
