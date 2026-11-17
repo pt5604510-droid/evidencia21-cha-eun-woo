@@ -1,7 +1,7 @@
 # Evidencia 21 · Desarrollo de aplicativo Bootstrap
 
 Aplicativo web responsive sobre **Cha Eun-woo** (biografía, trayectoria y obras).
-Técnico en Programación de Software (233104) · SENA · Guía de actividad de proyecto 6.
+
 
 ## Cómo verlo
 Abre `index.html` en el navegador. Necesita internet para cargar Bootstrap 5.3.8 y las tipografías desde CDN.
