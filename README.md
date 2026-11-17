@@ -5,7 +5,7 @@ Aplicativo web responsive sobre **Cha Eun-woo** (biografía, trayectoria y obras
 
 ## Cómo verlo
 Abre `index.html` en el navegador. Necesita internet para cargar Bootstrap 5.3.8 y las tipografías desde CDN.
-Para activar la base de datos sigue **`GUIA_BASE_DE_DATOS.md`** (Supabase + GitHub + Netlify/Vercel).
+
 
 ## Qué pide la evidencia y dónde está
 
