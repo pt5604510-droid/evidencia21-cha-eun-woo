@@ -29,7 +29,6 @@ evidencia21-cha-eun-woo/
 ├── js/    config.js · datos.js · obras.js · visitas.js · main.js
 ├── img/   fotografías
 ├── supabase/schema.sql
-├── GUIA_BASE_DE_DATOS.md
 └── README.md
 ```
 
